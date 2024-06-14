@@ -1,0 +1,78 @@
+{% extends './base.html' %}
+
+{% block title %} PreciosNet {% endblock %}
+
+{% block customCSS %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css')}}">
+{% endblock %}
+
+{% block body %}
+<main>
+    <section class="seccionLogin">
+        <div class="logo">
+            
+            <h1 class="titulo">PreciosNet</h1>
+            <img src="{{ url_for('static', filename='imagen/icon.png') }}" alt="logo sitio" class="img">
+        </div>
+
+        <div class="login">
+            <h2 class="sesion">INICIO SESIÓN</h2>
+            {% with messages = get_flashed_messages() %}
+        
+            {% if messages %}
+            <br>
+            {% for message in messages %}
+            <div class="mensaje">
+                <strong>⚠️{{ message }}</strong>
+            </div>
+            {% endfor %}
+            {% endif %}
+    
+            {% endwith %}
+            <form action="/login" method="POST" class="formularioInicio" onsubmit="return validacion_usuario();">
+                
+                <div class="input-container">
+                    <i class="fa-solid fa-user"></i>
+                    <label for="usuario">Usuario</label>
+                    <input type="text" name="usuario" id="usuario" placeholder="Ingrese el usuario o email" class="input">
+                </div>
+                <label id="mensaje-usuario"></label>
+                
+                <div class="input-container">
+                <i class="fa-solid fa-lock"></i>
+                    <label for="contraseña">Contraseña</label>
+                    <input type="password" name="contraseña" id="contraseña" placeholder="Contraseña" class="input">
+                </div>
+                <label id="mensaje-contraseña"></label>
+                
+                <div style="font-size: 13px;">
+                    <input type="checkbox" name="recordar" id="recordar">
+                    <label for="recordar">Recordar usuario</label>
+                    <a href=""style="float:right;">Olvido su contraseña?</a>
+                </div>
+                <input type="submit" value="Iniciar Sesion" class="botonIniciar" onclick="loginUser()">
+
+                <a href="../registro"><div class="botonRegistro">Registrarse</div></a>
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+
+    <p class="footer_texto1" style="margin-top: 40px;">Si tenes dudas te puedes <a href="">Contactar con el soporte del sitio</a> y <br> resolveremos tus dudas de forma inmediata </p>
+    <div style="margin-top: 40px;">
+        <p class="footer_texto3">© Fio UNaM 2024</p>
+        <p class="footer_texto4">Diseñado & Desarrollado por <a href="">Aspe</a> | <a href="">Wlodeck</a> | <a href="">Zdanovicz</a></p>
+    </div>
+    
+</footer>
+
+
+{% block customJS %}
+<script src="{{ url_for('static', filename='js/inicio.js') }}"></script> 
+{% endblock %}
+
+
+{% endblock %}

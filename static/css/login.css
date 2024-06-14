@@ -1,0 +1,218 @@
+body, html{
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+a{
+    text-decoration: none;
+}
+.titulo{
+    font-size: 80px;
+    padding-left: 8rem;
+    padding-right: 8rem;
+    font-weight: 800;
+}
+.img{
+    width: 350px; 
+    height: 380px;
+    padding-left: 6rem;
+    padding-right: 6rem;
+}
+.seccionLogin{
+    display: flex;
+    
+}
+.sesion{
+    font-size: 40px;
+    font-weight: 900;
+    padding-top: 10rem;
+}
+.login{
+    background-color: #38A1FF;
+    display: block;
+    flex: 1;
+}
+.logo{
+    background-image: url(../imagen/fondo.png);
+    background-repeat: no-repeat;
+    padding-bottom: 6rem;
+    padding-right: 1rem;
+    background-size: 65rem 48rem;
+}
+
+.formularioInicio{
+    display: flex;
+    flex-direction: column;
+    width: 330px;
+    margin-top: 70px;
+}
+label{
+    margin-top: 5px;
+}
+#usuario, #contraseña{
+    margin-top: 8px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: #d7d7e9;
+}
+
+#mensaje-usuario, #mensaje-contraseña{
+    font-size: 13.8px;
+    color: #940606;
+    background-color: #7e7b997d;
+    font-weight: 550;
+    margin-bottom: 10px;
+}
+
+a:hover{
+    color: #dddfe0;
+}
+
+.input-container {
+    position: relative;
+    width: 100%;
+    
+}
+
+.input-container i {
+    position: absolute;
+    left: 10px;
+    top: 60%;
+    transform: translateY(-50%);
+    color: rgb(56, 55, 55);
+}
+
+.input-container input{
+    width: 100%;
+    padding: 10px 10px 10px 35px; /* Ajuste del padding para dejar espacio al icono */
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.botonIniciar{
+    margin-top: 20px;
+    color: #ffffff;
+    background-color: #060606;
+    border-radius: 10px;
+    font-size: 15px;
+    padding: 5px;
+    cursor: pointer;
+    border: none;
+}
+.botonRegistro{
+    background-color: #D9D9D9; 
+    color: #6A6363; 
+    text-align: center;
+    margin-top: 20px;
+    border-radius: 10px;
+    font-size: 15px;
+    padding: 5px;
+    cursor: pointer;
+}
+.botonRegistro:hover{
+    color: #000000; 
+    background-color: #bbb4b4;
+}
+.botonIniciar:hover{
+    background-color: rgb(4, 70, 4);
+    color: #ffffff;
+    border: none;
+}
+@media (max-width: 1120px){
+    .img{
+        width: 300px; 
+        height: 280px;
+        padding: 0;
+    }
+    .seccionLogin{
+        display: block;
+        justify-content: center;
+        align-items: center;
+    }
+    .titulo{
+        padding: 0;
+        font-size: 4rem;
+        text-align: center;
+        font-weight: 650;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+    }
+  
+    .logo{
+        background-image: none;
+        padding-bottom: 6rem;
+        padding-left: 5rem;
+        text-align: center;
+        
+    }
+    .sesion{
+        display: none;
+
+    }
+    .login{
+        background-image: url(../imagen/fondo2.jpg);
+        background-repeat: no-repeat;
+        background-size: contain;
+        padding-bottom: 6rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+}
+@media(max-width: 480px){
+    .logo{
+        background-image: none;
+        padding-bottom: 6rem;
+        padding-left: 2rem;
+        text-align: center;
+        
+    }
+    .titulo{
+        padding: 0;
+        font-size: 3.8rem;
+        text-align: center;
+        font-weight: 650;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+    }
+}
+/*---------------------------------------------------------------*/
+footer {
+    position: relative;
+    display: block;
+    padding: 5px 8rem 20px 8rem;
+    background-color: #1f1f31;
+    color: #adb5bd;
+    text-align: center;
+    font-size: 14px;
+    align-items: center;
+    font-family: "Poppins", sans-serif;
+    
+}
+
+footer a {
+    color: rgb(189, 161, 249);
+}
+
+
+.footer_texto1 {
+    border: 1px #adb5bd solid;
+    padding: 5px;
+}
+
+/*-------------------------------------------------------------------*/
+.mensaje{
+    position: absolute;
+    border : 1px solid #fac0c0;
+    padding: 10px;
+    color: red;
+    background-color: #f7dada;
+    border-radius: 10px;
+    opacity: 70%;
+}

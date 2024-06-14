@@ -1,0 +1,100 @@
+.formularioRegistro{
+    text-align: center;
+    display: block;
+}
+.formulario-de-registro {
+    display: inline-flex;
+    text-align: start;
+    flex-direction: column;
+    font-family: "Poppins", sans-serif;
+    color: black;
+    padding: 2rem;
+}
+::placeholder{
+    color: rgb(78, 76, 76);
+}
+.iconoRegistroContenedor {
+    display: flex;
+    justify-content: center;
+}
+.titulo-registro{
+    font-size: 40px;
+    font-weight: 900;
+    margin-bottom: 2rem;
+    color: #38A1FF;
+}
+#producto,#marca,#local, #peso, #precio, #descripcion{
+    margin-top: 8px;
+    margin-bottom: 10px;
+    padding-right: 50px;
+    border: none;
+    border-radius: 10px;
+    background-color: #a4d1f8;
+    color: rgb(56, 55, 55);
+}
+
+#mensaje-seleccion-prod, #mensaje-seleccion-local,#mensaje-marca, #mensaje-peso, #mensaje-precio{
+    font-size: 13.8px;
+    color: #940606;
+    background-color: #bbb8d47d;
+    font-weight: 550;
+    margin-bottom: 10px;
+}
+
+textarea{
+    padding-left: 10px;
+}
+
+.input-container {
+    position: relative;
+    width: 100%;
+}
+
+.input-container i {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgb(56, 55, 55);
+}
+
+.input-container input, .input-container select {
+    width: 100%;
+    padding: 10px 10px 10px 35px; /* Ajuste del padding para dejar espacio al icono */
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+a:hover{
+    color: #dddfe0;
+}
+
+.titulo-registro{
+    font-size: 1.5rem;
+    text-align: center;
+
+}
+.iconoRegistro{
+    width: 150px;
+    height: 150px;
+    margin-bottom: 20px;
+    margin-left: 15px;
+}
+
+ #submitRegistro{
+    background-color: #38A1FF; 
+    color: white; 
+    text-align: center;
+    margin-top: 20px;
+    border-radius: 10px;
+    font-size: 15px;
+    padding: 5px;
+    border: none;
+    cursor: pointer;
+}
+#submitRegistro:hover{
+    background-color: rgb(28, 83, 128);
+    color: #ffffff;
+    border: none;
+}
