@@ -1,0 +1,79 @@
+{% extends './base.html' %}
+
+{% block title %} PreciosNet {% endblock %}
+
+{% block customCSS %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css')}}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/comercios.css')}}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css')}}">
+{% endblock %}
+
+{% block body %}
+
+<main >
+    
+    <div style="display: flex;justify-content: space-between;margin: 0 20px 0 30px">
+        <a href="../home"><div style="margin-top: 20px;" class="volver"><i class="fa-solid fa-left-long"></i></div></a>
+        <h2 class="titulo-registro" style=" display: inline-flex;">COMERCIOS</h2>
+        <h2 style="opacity: 0%;">------</h2>
+    </div>
+    <hr>
+
+    <div class="cajaprov">
+        <div class="table-responsive">
+            <table class="cajaprov1">
+                <thead >
+                    <tr style="font-size: 16px; background-color: #38A1FF; color: black;">
+                        <th>Nombre</th>
+                        <th>Direccion</th>
+                        <th>Descripcion</th>
+                        <th>Accion</th>
+                    </tr>
+                    <tr>
+                        <form action="" method="POST" style="display: inline;">
+                            <td><input type="text" name="nombre" id="nombre" placeholder="Ingresar Nombre del Comercio"></td>
+                            <td><input type="text" name="direccion" id="direccion" placeholder="Ingresar Direccion del Comercio"></t>
+                            <td><input type="text" name="descripcion" id="descripcion" placeholder="Ingresar Descripcion del Comercio"></td>
+                            <td><button type="submit" class="confirmButton"><i class="fa-solid fa-square-plus confirm"></i></button></td>
+                        </form>
+                    </tr>
+                </thead>
+                  
+                <tbody>
+            {% if comercios %}
+                {% for com in comercios %}
+                    <tr>
+                        <td>{{ com.nombre }}</td>
+                        <td>{{ com.direccion }}</td>
+                        <td>{{ com.descripcion }}</td>
+                        
+                        <td>
+                            <div style="display: flex; justify-content: space-around;">
+                                <form action="{{ url_for('comercios') }}" method="POST" style="display:inline;">
+                                    <input type="hidden" name="delete_id_com" id="delete_id_com" value="{{ com.id }}">
+                                    <button type="submit" onclick="return confirm('¿Estás seguro de que quieres eliminar este producto?');" class="deleteButton"><i class="fa-solid fa-trash-can delete" ></i></button>
+                                </form>     
+                            </div>
+                        </td>
+                       
+                        
+                    </tr>
+                
+                {% endfor %}
+            {% else %}
+            <p style="margin-top: 4rem;padding:0.5rem; position: absolute; border: rgb(161, 32, 32) 2px solid;">No hay productos disponibles</p>
+            {% endif %}
+                </tbody>
+            </table>
+        </div>
+
+       
+
+    </div>
+
+{% block customJS %}
+
+{% endblock %}
+
+
+{% endblock %}

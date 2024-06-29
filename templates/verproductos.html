@@ -1,0 +1,96 @@
+{% extends './base.html' %}
+
+{% block title %} PreciosNet {% endblock %}
+
+{% block customCSS %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css')}}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/productos.css')}}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css')}}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/verproductos.css')}}">
+{% endblock %}
+
+{% block body %}
+
+<main >
+    
+    <div style="display: flex;justify-content: space-between;margin: 0 20px 0 30px">
+        <a href="../home"><div style="margin-top: 20px;" class="volver"><i class="fa-solid fa-left-long"></i></div></a>
+        <h2 class="titulo-registro" style=" display: inline-flex;">PRODUCTOS</h2>
+        <h2 style="opacity: 0%;">------</h2>
+    </div>
+    <hr>
+    
+    <div class="cajaprov">
+        <div class="table-responsive">
+            <table class="cajaprov1">
+                <thead >
+                    <tr style="font-size: 16px; background-color: #38A1FF; color: black;">
+                        <th>Producto</th>
+                        <th>Marca</th>
+                        <th>Local</th>
+                        <th>Peso</th>
+                        <th>Precio</th>
+                        <th>Descripcion</th>
+                        <th>Acciones</th> 
+                    </tr>
+                </thead>
+                  
+                <tbody id="proveedoresContenedor">
+            {% if productos %}
+                {% for prod in productos %}
+                    <tr>
+                        <td>{{ prod.producto }}</td>
+                        <td>{{ prod.marca }}</td>
+                        <td>{{ prod.local }}</td>
+                        <td>{{ prod.peso }}</td>
+                        <td>{{ prod.precio }}</td>
+                        <td>{{ prod.descripcion }}</td>
+                        
+                        <td>
+                            <div style="display: flex; justify-content: space-around;">
+                                <form action="{{ url_for('verproductos') }}" method="POST" style="display:inline;">
+                                    <input type="hidden" name="confirm_id" id="confirm_id" value="{{ prod.id}}">
+                                    <input type="hidden" name="confirm_producto" id="confirm_producto" value="{{ prod.producto}}">
+                                    <input type="hidden" name="confirm_marca" id="confirm_marca" value="{{ prod.marca}}">
+                                    <input type="hidden" name="confirm_local" id="confirm_local" value="{{ prod.local}}">
+                                    <input type="hidden" name="confirm_peso" id="confirm_peso" value="{{ prod.peso}}">
+                                    <input type="hidden" name="confirm_precio" id="confirm_precio" value="{{ prod.precio}}">
+                                    <input type="hidden" name="confirm_descripcion" id="confirm_descripcion" value="{{ prod.descripcion}}">
+                                    <input type="hidden" name="confirm_validacion" id="confirm_validacion" value = 1 >
+                                    <button type="submit" onclick="return confirm('¿Estás seguro de verificar este producto?');" class="confirmButton"><i class="fa-solid fa-square-check confirm"></i></button>
+                                </form>
+                                <form action="{{ url_for('verproductos') }}" method="POST" style="display:inline;">
+                                    <input type="hidden" name="delete_id" id="delete_id" value="{{ prod.id }}">
+                                    <button type="submit" onclick="return confirm('¿Estás seguro de que quieres eliminar este producto?');" class="deleteButton"><i class="fa-solid fa-trash-can delete" ></i></button>
+                                </form>     
+                            </div>
+                        </td>
+                       
+                        
+                    </tr>
+                
+                {% endfor %}
+            {% else %}
+            <p style="margin-top: 4rem;padding:0.5rem; position: absolute; border: rgb(161, 32, 32) 2px solid;">No hay productos disponibles</p>
+            {% endif %}
+                </tbody>
+            </table>
+        </div>
+
+       
+
+    </div>
+
+
+{% block customJS %}
+
+{% endblock %}
+
+
+{% endblock %}
+<td>{{ producto.producto }}</td>
+<td>{{ producto.marca }}</td>
+<td>{{ producto.local }}</td>
+<td>{{ producto.peso }}</td>
+<td>{{ producto.precio }}</td>
+<td>{{ producto.descripcion }}</td>

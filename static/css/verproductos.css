@@ -1,0 +1,36 @@
+
+.cajaprov {
+    display: flex;
+    justify-content: center; /* Centra la tabla dentro del contenedor */
+    align-items: center;
+    text-align: center;
+    color: black;
+    padding: 0.5rem;
+    margin: 30px 20px;
+    margin-bottom: 220px;
+}
+
+.cajaprov1 {
+    width: 100%; /* Ocupa el ancho completo del contenedor */
+    border-collapse: collapse; /* Para que no haya espacios entre los bordes de las celdas */
+    background-color: #a4d1f8;
+    
+}
+
+
+table.cajaprov1 th,
+table.cajaprov1 td {
+    border-bottom-style: dashed;
+    border: 1px solid #303644;
+    padding: 1rem; 
+    text-align: left;
+    text-align: center;
+    
+}
+
+.table-responsive {
+    width: 100%;
+    overflow-x: auto; /* Agrega una barra de desplazamiento horizontal en pantallas pequeñas */
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}

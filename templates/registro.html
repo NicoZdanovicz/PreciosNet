@@ -5,15 +5,20 @@
 {% block customCSS %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/registro.css')}}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css')}}">
-
+<link rel="stylesheet" href="{{ url_for('static', filename='css/productos.css')}}">
 {% endblock %}
 
 {% block body %}
 
 <main>
     <section class="formularioRegistro">
-        <h2 class="titulo-registro">REGISTRO</h2>
-        <hr>
+        <section class="formularioRegistro">
+            <div style="display: flex;justify-content: space-between;margin: 0 20px 0 30px">
+                <a href="../home"><div style="margin-top: 20px;" class="volver"><i class="fa-solid fa-left-long"></i></div></a>
+                <h2 class="titulo-registro" style=" display: inline-flex;">REGISTRO</h2>
+                <h2 style="opacity: 0%;">------</h2>
+            </div>
+            <hr>
 
         <form action="{{ url_for('registro') }}" method="POST" enctype="application/x-www-form-urlencoded" class="formulario-de-registro" onsubmit="return validacion();">
             
@@ -79,16 +84,6 @@
         </form>
     </section>
 </main>
-
-<footer>
-
-    <p class="footer_texto1" style="margin-top: 40px;">Si tenes dudas te puedes <a href="">Contactar con el soporte del sitio</a> y <br> resolveremos tus dudas de forma inmediata </p>
-    <div style="margin-top: 40px;">
-        <p class="footer_texto3">© Fio UNaM 2024</p>
-        <p class="footer_texto4">Diseñado & Desarrollado por <a href="">Aspe</a> | <a href="">Wlodeck</a> | <a href="">Zdanovicz</a></p>
-    </div>
-    
-</footer>
 
 {% block customJS %}
 <script src="{{ url_for('static', filename='js/registro.js') }}"></script> 

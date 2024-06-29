@@ -1,0 +1,95 @@
+{% extends './base.html' %}
+
+{% block title %} Home {% endblock %}
+
+{% block customCSS %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/productos.css')}}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css')}}">
+
+{% endblock %}
+
+{% block body %}
+
+<main>
+    <section class="formularioRegistro">
+        <div style="display: flex;justify-content: space-between;margin: 0 20px 0 30px">
+            <a href="../home"><div style="margin-top: 20px;" class="volver"><i class="fa-solid fa-left-long"></i></div></a>
+            <h2 class="titulo-registro" style=" display: inline-flex;">NUEVO CENSO</h2>
+            <h2 style="opacity: 0%;">------</h2>
+        </div>
+        <hr>
+        
+        <form action="" method="POST" enctype="application/x-www-form-urlencoded" class="formulario-de-registro" onsubmit="return validacion();">
+            {% with messages = get_flashed_messages() %}
+        
+            {% if messages %}
+            <br>
+            {% for message in messages %}
+            <div class="mensaje" style="top: 160px; background-color: greenyellow;color: black;">
+                <strong><i class="fa-regular fa-circle-check"></i> {{ message }}</strong>
+            </div>
+            {% endfor %}
+            {% endif %}
+    
+            {% endwith %}
+            <div class="input-container">
+                <i class="fa-solid fa-cart-shopping" style="top: 30px;"></i>
+                <select id="producto" name="producto">
+                    <option value="">Seleccione un Producto:</option>
+                    <option value="leche">Leche</option>
+                    <option value="fideo">Fideo</option>
+                    <option value="arroz">Arroz</option>
+                    <option value="huevo">Huevo</option>
+                </select>
+               </div>
+               <label id="mensaje-seleccion-prod"></label>
+
+            <div class="input-container">
+                <i class="fa-solid fa-tags" style="top: 25px;"></i>
+                <input type="text" id="marca" name="marca" placeholder="Ingrese la marca del producto">
+                
+            </div>
+            <label id="mensaje-marca"></label>
+
+            <div class="input-container">
+                <i class="fa-solid fa-shop" style="top: 25px;"></i>
+                <select id="local" name="local">
+                    <option value="">Seleccione una Opcion</option>
+                    {% for com in comercios %}
+                    <option value="{{ com.nombre }}">{{ com.nombre }}</option>
+                    {% endfor %}
+                </select>
+                
+            </div>
+            <label id="mensaje-seleccion-local"></label>
+
+            <div class="input-container">
+                <i class="fa-solid fa-weight-scale" style="top: 25px;"></i>
+                <input type="number" id="peso" name="peso" placeholder="Ingrese el peso del producto Kg">
+                
+            </div>
+            <label id="mensaje-peso"></label>
+
+            <div class="input-container">
+                <i class="fa-solid fa-sack-dollar" style="top: 25px;"></i>
+                <input type="number" id="precio" name="precio" placeholder="Ingrese el precio del producto">
+                
+            </div>
+            <label id="mensaje-precio"></label>
+            
+            <textarea name="descripcion" id="descripcion" cols="30" rows="5" maxlength="1000" placeholder="Descripcion(opcional)"></textarea>
+
+
+            <input id="submitRegistro" name="submit" type="submit" value="Enviar">
+            
+        </form>
+    </section>
+
+</main>
+
+{% block customJS %}
+<script src="{{ url_for('static', filename='js/productos.js') }}"></script> 
+{% endblock %}
+
+
+{% endblock %}

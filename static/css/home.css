@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
+body{
+    background-color: rgb(221, 221, 241);
+}
+.cerrarsesion{
+    color: rgb(197, 27, 27);
+    font-size: 25px;
+}
+.cerrarsesion:hover{
+    color: black;
+}
+.seleccion{
+    justify-content: center; 
+    align-items: center; 
+    text-align: center; 
+    display: flex; 
+    flex-direction: column;
+    
+}
+.seleccion_hijo{
+    border: 1px solid #333; 
+    margin-bottom: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    background-color: #a4d1f8;
+    text-align: justify;
+    
+}
+
+.seleccion_hijo:hover{
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 1.4);
+   
+}
+
+.seleccion_hijo_hijo{
+    color: black; 
+    display: block; 
+    border: 1px solid #333; 
+    border-radius: 10px;
+    padding: 15px 0;
+}
+
+.seleccion section{
+    min-width: 300px;
+
+}
+.agregar_producto{
+    position: sticky;
+    bottom: 0;
+    text-align: center;
+    height: 180px; 
+    padding-top: 20px;
+    background-image: url(../imagen/fondo23.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.8));
+    opacity: 80%;
+}
+@media (max-width: 690px) {
+    .agregar_producto{
+        height: 80px;
+    }
+}
+.iconoagregar{
+    font-size: 35px;
+    color: black;
+}
+.iconoagregar:hover{
+    color: wheat;
+    
+}
+
+.iconoagregarboton{
+    background-color: transparent; 
+    border: none;
+    cursor: pointer;
+}
+.iconoagregarboton:hover{
+    color: white;
+}
+.iconoshome{
+    float: left; 
+    margin-left: 16px;
+    font-size: 20px;
+}

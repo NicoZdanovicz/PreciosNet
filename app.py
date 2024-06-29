@@ -3,7 +3,7 @@ from config import config
 from flask_login import LoginManager, login_user, logout_user, current_user, login_required
 
 from models.ModelUser import ModelUser
-from models.entities.User import User, Register, Productos
+from models.entities.User import User, Register, Productos, Comercios
 
 from flask_mysqldb import MySQL
 
@@ -15,6 +15,8 @@ login_manager_app = LoginManager(app)
 @login_manager_app.user_loader
 def load_user(id):
     return ModelUser.get_by_id(db, id)
+
+
 
 @app.route('/')
 def index():
@@ -42,6 +44,15 @@ def login():
 @login_required
 def home():
 
+    
+
+    return render_template('home.html')
+
+
+
+@app.route('/productos', methods=['GET', 'POST'])
+def productos():
+
     if request.method == 'POST':
         producto = request.form['producto']
         marca = request.form['marca']
@@ -50,16 +61,74 @@ def home():
         precio = request.form['precio']
         descripcion = request.form['descripcion']
         
-        user = Productos(producto, marca, local, peso, precio, descripcion)
+        productos = Productos(0, producto, marca, local, peso, precio, descripcion, 0)
 
         try:
-            ModelUser.producto(db, user)
+            ModelUser.producto(db, productos)
             flash("Producto Cargado con Exito")
-            return redirect('home')
+
+            return redirect('productos')
         except Exception as ex:
             flash("Error al cargar el Producto")
-            return redirect('home')
-    return render_template('home.html')
+            return redirect('productos')
+        
+   
+    comercios = ModelUser.get_comercios(db)
+    return render_template('productos.html', comercios=comercios)
+
+@app.route('/comercios', methods=['GET', 'POST'])
+def comercios():   
+    comercios = ModelUser.get_comercios(db)
+    if request.method == 'POST':
+        if 'delete_id_com' in request.form: # Detecta si es una solicitud de borrar
+            id = request.form['delete_id_com']
+            ModelUser.del_comercio(db, id)
+            return redirect('comercios')
+        else:
+            comercio = request.form['nombre']
+            direccion = request.form['direccion']
+            descripcion = request.form['descripcion']
+            comercios = Comercios(0, comercio, direccion, descripcion)
+            ModelUser.comercio(db, comercios)
+            return redirect('comercios')
+    else:
+
+        return render_template('comercios.html', comercios=comercios)
+
+@app.route('/estadisticas', methods=['GET', 'POST'])
+def estadisticas():   
+
+    return render_template('estadisticas.html')
+
+@app.route('/verproductos', methods=['GET', 'POST'])
+def verproductos():   
+    productos = ModelUser.get_productos(db)
+
+    if request.method == 'POST':
+        if 'delete_id' in request.form: # Detecta si es una solicitud de borrar
+            id = request.form['delete_id']
+            ModelUser.del_producto(db, id)
+            return redirect('verproductos')
+        
+        elif 'confirm_id' in request.form:  # Detecta si es una solicitud de edición
+            confirm_id = request.form['confirm_id']
+            confirm_producto = request.form['confirm_producto']
+            confirm_marca = request.form['confirm_marca']
+            confirm_local = request.form['confirm_local']
+            confirm_peso = request.form['confirm_peso']
+            confirm_precio = request.form['confirm_precio']
+            confirm_descripcion = request.form['confirm_descripcion']
+            confirm_validacion = request.form['confirm_validacion']
+            producto = Productos(confirm_id, confirm_producto, confirm_marca, confirm_local, confirm_peso, confirm_precio, confirm_descripcion, confirm_validacion)
+            ModelUser.confirmar_producto(db, producto)
+            return redirect('verproductos')
+        
+    return render_template('verproductos.html', productos=productos)
+
+@app.route('/recompensas', methods=['GET', 'POST'])
+def recompensas():   
+
+    return render_template('recompensas.html')
 
 @app.route('/registro', methods=['GET', 'POST'])
 def registro():
@@ -77,6 +146,7 @@ def registro():
             return redirect(url_for('login'))
         except Exception as ex:
             flash("Usuario o Correo ya registrado")
+            
             return render_template('registro.html')
     return render_template('registro.html')
 

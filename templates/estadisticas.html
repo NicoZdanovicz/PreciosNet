@@ -1,0 +1,28 @@
+{% extends './base.html' %}
+
+{% block title %} PreciosNet {% endblock %}
+
+{% block customCSS %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css')}}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/productos.css')}}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css')}}">
+{% endblock %}
+
+{% block body %}
+
+<main >
+    
+    <div style="display: flex;justify-content: space-between;margin: 0 20px 0 30px">
+        <a href="../home"><div style="margin-top: 20px;" class="volver"><i class="fa-solid fa-left-long"></i></div></a>
+        <h2 class="titulo-registro" style=" display: inline-flex;">ESTADISTICAS</h2>
+        <h2 style="opacity: 0%;">------</h2>
+    </div>
+    <hr>
+
+
+{% block customJS %}
+
+{% endblock %}
+
+
+{% endblock %}

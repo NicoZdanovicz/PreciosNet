@@ -195,6 +195,11 @@ footer {
     font-family: "Poppins", sans-serif;
     
 }
+@media (max-width: 530px){
+    footer{
+        padding: 5px 2rem 20px 2rem;
+    }
+}
 
 footer a {
     color: rgb(189, 161, 249);

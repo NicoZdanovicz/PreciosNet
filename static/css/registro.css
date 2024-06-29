@@ -26,7 +26,7 @@
 #nombre,#password,#correo, #rol, #confirmPassword{
     margin-top: 8px;
     margin-bottom: 10px;
-    border: none;
+    border: 1px solid black;
     border-radius: 10px;
     background-color: #a4d1f8;
     color: rgb(56, 55, 55);
@@ -38,6 +38,7 @@
     background-color: #bbb8d47d;
     font-weight: 550;
     margin-bottom: 10px;
+   
 }
 
 

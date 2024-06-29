@@ -23,10 +23,20 @@ class Register():
 
 class Productos():
     
-        def __init__(self, producto, marca, local, peso, precio, descripcion) -> None:
+        def __init__(self, id, producto, marca, local, peso, precio, descripcion, verificado) -> None:
+            self.id = id
             self.producto = producto
             self.marca = marca
             self.local = local
             self.peso = peso
             self.precio = precio
             self.descripcion = descripcion
+            self.verificado = verificado
+
+class Comercios():
+
+    def __init__(self, id, nombre, direccion, descripcion) -> None:
+        self.id = id
+        self.nombre = nombre
+        self.direccion = direccion
+        self.descripcion = descripcion
